@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox style="-fx-background-color: #f4f7fb;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ExamensController">
+    <VBox spacing="20" style="-fx-padding: 25;" HBox.hgrow="ALWAYS">
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #154697;" text="Gestion des Examens" />
+        
+        <HBox spacing="10">
+            <Button onAction="#handlePlanifier" style="-fx-background-color: #6eb530; -fx-text-fill: white;" text="➕ Planifier un Examen" />
+            <Button onAction="#handleDelete" style="-fx-background-color: #d32f2f; -fx-text-fill: white;" text="🗑 Annuler" />
+        </HBox>
+
+        <TableView fx:id="tableExamens" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colType" prefWidth="100" text="Type" /> <TableColumn fx:id="colModule" prefWidth="150" text="Module" />
+                <TableColumn fx:id="colGroupe" prefWidth="100" text="Groupe" />
+                <TableColumn fx:id="colSalle" prefWidth="100" text="Salle" />
+                <TableColumn fx:id="colDate" prefWidth="100" text="Date" />
+                <TableColumn fx:id="colHeure" prefWidth="100" text="Heure" />
+            </columns>
+        </TableView>
+    </VBox>
+</HBox>

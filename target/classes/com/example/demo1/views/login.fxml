@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.LoginController">
+
+    <!-- MAIN AREA -->
+    <StackPane styleClass="login-bg" VBox.vgrow="ALWAYS">
+
+        <!-- CARD -->
+        <HBox alignment="CENTER" maxWidth="720" prefHeight="440" styleClass="login-card">
+
+            <!-- LEFT PANEL -->
+            <StackPane prefWidth="300" styleClass="login-left-panel">
+                <ImageView fitWidth="180" preserveRatio="true">
+                    <image>
+                        <Image url="@pic/iisga.png" />
+                    </image>
+                </ImageView>
+            </StackPane>
+
+            <!-- RIGHT PANEL -->
+            <VBox alignment="CENTER_LEFT" prefWidth="400" spacing="16" style="-fx-padding: 36 32;">
+
+                <!-- TITLE -->
+                <Label styleClass="login-title" text="Bienvenue à l'IISGA" />
+                <Label styleClass="login-subtitle" text="Accédez à votre compte pour consulter les emplois du temps" wrapText="true" />
+                <Label styleClass="login-heading" text="Connexion" />
+
+                <!-- USERNAME -->
+                <VBox spacing="5">
+                    <HBox spacing="3">
+                        <Label styleClass="login-label" text="Nom d'utilisateur" />
+                        <Label styleClass="login-required" text="*" />
+                    </HBox>
+                    <TextField fx:id="usernameField" prefHeight="38" promptText="Entrer votre nom" styleClass="login-input" />
+                </VBox>
+
+                <!-- PASSWORD -->
+                <VBox spacing="5">
+                    <HBox spacing="3">
+                        <Label styleClass="login-label" text="Mot de passe" />
+                        <Label styleClass="login-required" text="*" />
+                    </HBox>
+                    <PasswordField fx:id="passwordField" prefHeight="38" promptText="Entrer votre mot de passe" styleClass="login-input" />
+                </VBox>
+
+                <!-- BUTTON -->
+                <Button maxWidth="Infinity" onAction="#handleLogin" prefHeight="42" styleClass="login-btn" text="Connexion" />
+
+                <!-- MESSAGE -->
+                <Label fx:id="messageLabel" styleClass="login-message" />
+
+            </VBox>
+
+        </HBox>
+
+    </StackPane>
+
+</VBox>
