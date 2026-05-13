@@ -2,13 +2,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox style="-fx-background-color: #f4f7fb;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ExamensController">
+<HBox style="-fx-background-color: #f4f7fb;" styleClass="app-root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controllers.ExamensController">
     <VBox spacing="20" style="-fx-padding: 25;" HBox.hgrow="ALWAYS">
-        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #154697;" text="Gestion des Examens" />
+        <Label styleClass="label-primary" text="Gestion des Examens" />
         
         <HBox spacing="10">
-            <Button onAction="#handlePlanifier" style="-fx-background-color: #6eb530; -fx-text-fill: white;" text="➕ Planifier un Examen" />
-            <Button onAction="#handleDelete" style="-fx-background-color: #d32f2f; -fx-text-fill: white;" text="🗑 Annuler" />
+            <Button onAction="#handlePlanifier" styleClass="btn-success" text="➕ Planifier un Examen" />
+            <Button onAction="#handleDelete" styleClass="btn-danger" text="🗑 Annuler" />
         </HBox>
 
         <TableView fx:id="tableExamens" VBox.vgrow="ALWAYS">

@@ -11,91 +11,90 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane style="-fx-background-color: #f4f7fb;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.MainController">
+<BorderPane style="-fx-background-color: #f4f7fb;" styleClass="app-root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controllers.MainController">
 
-    <!-- ================= SIDEBAR ================= -->
     <left>
-        <VBox fx:id="sidebar" prefWidth="260" spacing="10" style="-fx-background-color: #154697; -fx-padding: 20 10;">
+        <VBox fx:id="sidebar" prefWidth="260" spacing="10" styleClass="sidebar">
 
-            <Label style="-fx-text-fill: #6eb530; -fx-font-size: 16px; -fx-font-weight: bold;" text="Menu principal" />
+            <Label styleClass="sidebar-title" text="Menu principal" />
 
             <!-- ITEM -->
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10; -fx-cursor: hand;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showAccueil">
                 <Label style="-fx-font-size: 16px;" text="🏠" />
-                <Label style="-fx-text-fill: white;" text="Accueil" />
+                <Label text="Accueil" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
             <!-- ITEM -->
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showFormateurs">
                 <ImageView fitHeight="20" fitWidth="20">
                     <image><Image url="@icons/professeurs.png" /></image>
                 </ImageView>
-                <Label style="-fx-text-fill: white;" text="Formateurs" />
+                <Label text="Formateurs" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
             <!-- ITEM -->
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showSalles">
                 <ImageView fitHeight="20" fitWidth="20">
                     <image><Image url="@icons/salles.png" /></image>
                 </ImageView>
-                <Label style="-fx-text-fill: white;" text="Salles" />
+                <Label text="Salles" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
             <!-- ITEM -->
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showModules">
                 <Label style="-fx-font-size: 16px;" text="📘" />
-                <Label style="-fx-text-fill: white;" text="Modules" />
+                <Label text="Modules" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
             <!-- ITEM -->
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showGroupes">
                 <ImageView fitHeight="20" fitWidth="20">
                     <image><Image url="@icons/groupes.png" /></image>
                 </ImageView>
-                <Label style="-fx-text-fill: white;" text="Groupes" />
+                <Label text="Groupes" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showEmplois">
                 <Label text="📅" />
-                <Label style="-fx-text-fill: white;" text="Emplois" />
+                <Label text="Emplois" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
-            <HBox alignment="CENTER_LEFT" spacing="12" style="-fx-padding: 10; -fx-background-radius: 10;">
+            <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showExamens">
                 <Label text="📝" />
-                <Label style="-fx-text-fill: white;" text="Examens" />
+                <Label text="Examens" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Label style="-fx-text-fill: #cbd5e1;" text="&gt;" />
+                <Label styleClass="arrow" text="&gt;" />
             </HBox>
 
             <Region VBox.vgrow="ALWAYS" />
 
-            <Button fx:id="logoutBtn" onAction="#handleLogout" style="-fx-background-color: transparent;                            -fx-text-fill: white;                            -fx-padding: 10;                            -fx-border-color: white;                            -fx-border-radius: 8;" text="🚪 Déconnexion" />
+            <Button fx:id="logoutBtn" onAction="#handleLogout" styleClass="btn-logout" text="🚪 Déconnexion" />
         </VBox>
     </left>
 
     <!-- ================= TOPBAR ================= -->
     <top>
-        <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: white;                      -fx-padding: 10 20;                      -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 10,0,0,3);">
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="topbar">
 
             <ImageView fitHeight="45" preserveRatio="true">
-                <image><Image url="@pic/iisga.png" /></image>
+                <image><Image url="@images/iisga.png" /></image>
             </ImageView>
 
-            <Button style="-fx-background-color: #154697;                            -fx-text-fill: white;                            -fx-background-radius: 8;" text="☰" />
+            <Button styleClass="btn-menu" text="☰" />
 
-            <TextField prefWidth="280" promptText="Recherche..." style="-fx-background-radius: 20;                               -fx-border-radius: 20;                               -fx-padding: 5 15;                               -fx-border-color: #d1d5db;" />
+            <TextField prefWidth="280" promptText="Recherche..." styleClass="search-field" />
 
             <Region HBox.hgrow="ALWAYS" />
 

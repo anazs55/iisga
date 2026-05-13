@@ -3,28 +3,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox xmlns="http://javafx.com/javafx/25"
+<HBox xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.example.demo1.SeancesController"
-      style="-fx-background-color: #f4f7fb;">
+      fx:controller="com.example.demo1.controllers.SeancesController"
+      style="-fx-background-color: #f4f7fb;"
+      styleClass="app-root"
+      stylesheets="@style.css">
 
     <VBox spacing="20" HBox.hgrow="ALWAYS" style="-fx-padding: 25;">
 
         <!-- TITLE -->
         <Label text="Gestion des Séances"
-               style="-fx-font-size: 22px;
-                      -fx-font-weight: bold;
-                      -fx-text-fill: #154697;" />
+               styleClass="label-primary" />
 
         <!-- ACTIONS -->
         <HBox spacing="10">
             <Button text="➕ Ajouter"
                     onAction="#handleAdd"
-                    style="-fx-background-color: #6eb530; -fx-text-fill: white;" />
+                    styleClass="btn-success" />
 
             <Button text="🗑 Supprimer"
                     onAction="#handleDelete"
-                    style="-fx-background-color: #d32f2f; -fx-text-fill: white;" />
+                    styleClass="btn-danger" />
         </HBox>
 
         <!-- CONTENT -->
@@ -37,7 +37,7 @@
                          -fx-background-radius: 12;">
 
                 <Label text="Liste des Séances"
-                       style="-fx-font-weight: bold;" />
+                       styleClass="section-title" />
 
                 <TableView fx:id="tableSeances" prefHeight="400">
 

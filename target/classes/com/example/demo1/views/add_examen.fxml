@@ -2,11 +2,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #d32f2f; -fx-border-width: 1;" prefWidth="450" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="Planification d'Examen" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #d32f2f;" />
+<VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #d32f2f; -fx-border-width: 1;" styleClass="app-root" stylesheets="@style.css" prefWidth="450" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controllers.AddDialogController">
+    <Label text="Planification d'Examen" styleClass="label-primary label-error" />
     
     <GridPane vgap="12" hgap="15">
-        <Label text="Type d'examen :" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;" />
+        <Label text="Type d'examen :" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="label-secondary" />
         <HBox spacing="20" GridPane.rowIndex="0" GridPane.columnIndex="1">
             <RadioButton text="Normal" fx:id="rbNormal" selected="true">
                 <toggleGroup><ToggleGroup fx:id="groupType"/></toggleGroup>
@@ -31,7 +31,7 @@
     </GridPane>
 
     <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
-        <Button text="Fermer" />
-        <Button text="Confirmer l'examen" style="-fx-background-color: #d32f2f; -fx-text-fill: white;" />
+        <Button text="Fermer" styleClass="btn-secondary" onAction="#handleCancel" />
+        <Button text="Confirmer l'examen" styleClass="btn-danger" onAction="#handleSave" />
     </HBox>
 </VBox>

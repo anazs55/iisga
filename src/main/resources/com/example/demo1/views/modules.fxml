@@ -7,23 +7,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox style="-fx-background-color: #f4f7fb;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ModulesController">
+<HBox style="-fx-background-color: #f4f7fb;" styleClass="app-root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.controllers.ModulesController">
 
     <VBox spacing="20" style="-fx-padding: 25;" HBox.hgrow="ALWAYS">
 
-        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #154697;" text="Gestion des Modules" />
+        <Label styleClass="label-primary" text="Gestion des Modules" />
 
         <HBox spacing="10">
-            <Button style="-fx-background-color: #6eb530; -fx-text-fill: white;" text="➕ Ajouter" />
-            <Button style="-fx-background-color: #154697; -fx-text-fill: white;" text="✏ Modifier" />
-            <Button style="-fx-background-color: #d32f2f; -fx-text-fill: white;" text="🗑 Supprimer" />
+            <Button onAction="#handleAjouter" styleClass="btn-success" text="➕ Ajouter" />
+            <Button onAction="#handleModifier" styleClass="btn-primary" text="✏ Modifier" />
+            <Button onAction="#handleSupprimer" styleClass="btn-danger" text="🗑 Supprimer" />
         </HBox>
 
         <HBox spacing="20">
 
             <!-- TABLE -->
             <VBox style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 12;" HBox.hgrow="ALWAYS">
-                <Label style="-fx-font-weight: bold;" text="Liste des Modules" />
+                <Label styleClass="section-title" text="Liste des Modules" />
 
                 <TableView fx:id="tableModules" prefHeight="400">
                     <columns>
