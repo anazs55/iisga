@@ -28,8 +28,8 @@
 
             <!-- ITEM -->
             <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showFormateurs">
-                <ImageView fitHeight="20" fitWidth="20">
-                    <image><Image url="@icons/professeurs.png" /></image>
+                <ImageView fitHeight="20" fitWidth="20" styleClass="white-icon">
+                    <image><Image url="/com/example/demo1/icons/professeurs.png" /></image>
                 </ImageView>
                 <Label text="Formateurs" />
                 <Region HBox.hgrow="ALWAYS" />
@@ -38,8 +38,8 @@
 
             <!-- ITEM -->
             <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showSalles">
-                <ImageView fitHeight="20" fitWidth="20">
-                    <image><Image url="@icons/salles.png" /></image>
+                <ImageView fitHeight="20" fitWidth="20" styleClass="white-icon">
+                    <image><Image url="/com/example/demo1/icons/salles.png" /></image>
                 </ImageView>
                 <Label text="Salles" />
                 <Region HBox.hgrow="ALWAYS" />
@@ -56,8 +56,8 @@
 
             <!-- ITEM -->
             <HBox alignment="CENTER_LEFT" spacing="12" styleClass="menu-item" onMouseClicked="#showGroupes">
-                <ImageView fitHeight="20" fitWidth="20">
-                    <image><Image url="@icons/groupes.png" /></image>
+                <ImageView fitHeight="20" fitWidth="20" styleClass="white-icon">
+                    <image><Image url="/com/example/demo1/icons/groupes.png" /></image>
                 </ImageView>
                 <Label text="Groupes" />
                 <Region HBox.hgrow="ALWAYS" />
@@ -89,17 +89,17 @@
         <HBox alignment="CENTER_LEFT" spacing="15" styleClass="topbar">
 
             <ImageView fitHeight="45" preserveRatio="true">
-                <image><Image url="@images/iisga.png" /></image>
+                <image><Image url="/com/example/demo1/images/iisga.png" /></image>
             </ImageView>
 
-            <Button styleClass="btn-menu" text="☰" />
+            <Button styleClass="btn-menu" text="☰" onAction="#toggleSidebar" />
 
-            <TextField prefWidth="280" promptText="Recherche..." styleClass="search-field" />
+            <TextField fx:id="searchField" prefWidth="280" promptText="Recherche..." styleClass="search-field" onAction="#handleSearch" />
 
             <Region HBox.hgrow="ALWAYS" />
 
-            <Label style="-fx-text-fill: #154697;" text="🔔" />
-            <Label style="-fx-text-fill: #154697; -fx-font-weight: bold;" text="👤 Admin" />
+            <Button styleClass="topbar-btn" text="🔔" onAction="#showNotifications" />
+            <Button styleClass="topbar-btn" text="👤 Admin" onAction="#showProfile" />
         </HBox>
     </top>
 

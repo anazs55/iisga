@@ -6,6 +6,7 @@ import com.example.demo1.models.Module;
 import com.example.demo1.models.Salle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class ExamensController {
+public class ExamensController implements Searchable {
 
     @FXML private TableView<Examen> tableExamens;
 
@@ -28,6 +29,9 @@ public class ExamensController {
     @FXML private TableColumn<Examen, Salle> colSalle;
     @FXML private TableColumn<Examen, LocalDate> colDate;
     @FXML private TableColumn<Examen, String> colHeure;
+
+    private ObservableList<Examen> examens;
+    private FilteredList<Examen> filteredExamens;
 
     @FXML
     public void initialize() {
@@ -41,11 +45,30 @@ public class ExamensController {
     }
 
     private void chargerDonnees() {
-        ObservableList<Examen> examens = FXCollections.observableArrayList(
-            new Examen("Partiel", new Module(1, "Mathématiques", 30), new Groupe(1, "Groupe 1", "Licence 1"), new Salle(1, "Salle A101", 30), LocalDate.now().plusDays(7), "09:00"),
-            new Examen("Final", new Module(2, "Physique", 25), new Groupe(2, "Groupe 2", "Licence 2"), new Salle(2, "Salle B202", 40), LocalDate.now().plusDays(14), "14:00")
-        );
-        tableExamens.setItems(examens);
+        if (examens == null) {
+            examens = FXCollections.observableArrayList(
+                new Examen("Partiel", new Module(1, "Mathématiques", 30), new Groupe(1, "Groupe 1", "Licence 1"), new Salle(1, "Salle A101", 30), LocalDate.now().plusDays(7), "09:00"),
+                new Examen("Final", new Module(2, "Physique", 25), new Groupe(2, "Groupe 2", "Licence 2"), new Salle(2, "Salle B202", 40), LocalDate.now().plusDays(14), "14:00")
+            );
+            filteredExamens = new FilteredList<>(examens, e -> true);
+            tableExamens.setItems(filteredExamens);
+        }
+    }
+
+    @Override
+    public void search(String query) {
+        String lowerQuery = query == null ? "" : query.toLowerCase().trim();
+        filteredExamens.setPredicate(examen -> {
+            if (lowerQuery.isEmpty()) {
+                return true;
+            }
+            return examen.getType().toLowerCase().contains(lowerQuery)
+                || examen.getModule().getNom().toLowerCase().contains(lowerQuery)
+                || examen.getGroupe().getNom().toLowerCase().contains(lowerQuery)
+                || examen.getSalle().getNom().toLowerCase().contains(lowerQuery)
+                || examen.getDate().toString().contains(lowerQuery)
+                || examen.getHeure().toLowerCase().contains(lowerQuery);
+        });
     }
 
     @FXML
@@ -62,7 +85,7 @@ public class ExamensController {
 
     @FXML
     private void handleDelete() {
-        // TODO: delete selected examen.
+        // TODO: Supprimer l'examen sélectionné de la liste
     }
 }
 

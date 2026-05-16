@@ -3,6 +3,7 @@ package com.example.demo1.controllers;
 import com.example.demo1.models.Salle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class SallesController {
+public class SallesController implements Searchable {
 
     @FXML private TableView<Salle> tableSalles;
     @FXML private TableColumn<Salle, Integer> colId;
@@ -23,6 +24,7 @@ public class SallesController {
     @FXML private TableColumn<Salle, Integer> colCapacite;
 
     private ObservableList<Salle> salles;
+    private FilteredList<Salle> filteredSalles;
 
     @FXML
     public void initialize() {
@@ -64,8 +66,23 @@ public class SallesController {
                 new Salle(2, "Salle B202", 40),
                 new Salle(3, "Salle C303", 25)
             );
-            tableSalles.setItems(salles);
+            filteredSalles = new FilteredList<>(salles, p -> true);
+            tableSalles.setItems(filteredSalles);
         }
+    }
+
+    @Override
+    public void search(String query) {
+        if (filteredSalles == null) {
+            return;
+        }
+        String lowerQuery = query == null ? "" : query.toLowerCase();
+        filteredSalles.setPredicate(salle ->
+            lowerQuery.isEmpty()
+                || String.valueOf(salle.getId()).contains(lowerQuery)
+                || salle.getNom().toLowerCase().contains(lowerQuery)
+                || String.valueOf(salle.getCapacite()).contains(lowerQuery)
+        );
     }
 
     private void openDialog(String resourcePath, String title) throws IOException {

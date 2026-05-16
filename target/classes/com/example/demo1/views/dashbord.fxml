@@ -16,8 +16,13 @@
     <VBox spacing="20" HBox.hgrow="ALWAYS" style="-fx-padding: 25;">
 
         <!-- TITLE -->
-        <Label text="Bienvenue Admin !"
-               styleClass="dashboard-title" />
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <ImageView fitHeight="50" preserveRatio="true">
+                <image><Image url="/com/example/demo1/images/iisga.png"/></image>
+            </ImageView>
+            <Label text="Bienvenue Admin !"
+                   styleClass="dashboard-title" />
+        </HBox>
 
         <!-- ================= STATS ================= -->
         <HBox spacing="15">
@@ -26,9 +31,6 @@
             <VBox spacing="8" styleClass="stat-card">
 
                 <HBox spacing="10" alignment="CENTER_LEFT">
-                    <ImageView fitHeight="18" fitWidth="18">
-                        <image><Image url="@icons/salles.png"/></image>
-                    </ImageView>
 
                     <VBox>
                         <Label text="Salles" styleClass="stat-title"/>
@@ -41,8 +43,8 @@
             <VBox spacing="8" styleClass="stat-card">
 
                 <HBox spacing="10" alignment="CENTER_LEFT">
-                    <ImageView fitHeight="18" fitWidth="18">
-                        <image><Image url="@icons/professeurs.png"/></image>
+                    <ImageView fitHeight="18" fitWidth="18" styleClass="white-icon">
+                        <image><Image url="/com/example/demo1/icons/professeurs.png"/></image>
                     </ImageView>
 
                     <VBox>
@@ -56,8 +58,8 @@
             <VBox spacing="8" styleClass="stat-card">
 
                 <HBox spacing="10" alignment="CENTER_LEFT">
-                    <ImageView fitHeight="18" fitWidth="18">
-                        <image><Image url="@icons/groupes.png"/></image>
+                    <ImageView fitHeight="18" fitWidth="18" styleClass="white-icon">
+                        <image><Image url="/com/example/demo1/icons/groupes.png"/></image>
                     </ImageView>
 
                     <VBox>
@@ -82,8 +84,8 @@
                     <!-- BUTTON -->
                     <Button text="Importer" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="task-btn">
                         <graphic>
-                            <ImageView fitHeight="20" fitWidth="20">
-                                <image><Image url="@icons/importer.png"/></image>
+                            <ImageView fitHeight="20" fitWidth="20" styleClass="white-icon">
+                                <image><Image url="/com/example/demo1/icons/importer.png"/></image>
                             </ImageView>
                         </graphic>
                     </Button>
@@ -91,8 +93,8 @@
                     <!-- BUTTON -->
                     <Button text="Générer" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="task-btn">
                         <graphic>
-                            <ImageView fitHeight="20" fitWidth="20">
-                                <image><Image url="@icons/gerer.png"/></image>
+                            <ImageView fitHeight="20" fitWidth="20" styleClass="white-icon">
+                                <image><Image url="/com/example/demo1/icons/gerer.png"/></image>
                             </ImageView>
                         </graphic>
                     </Button>
@@ -100,8 +102,8 @@
                     <!-- BUTTON -->
                     <Button text="Exporter" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="task-btn">
                         <graphic>
-                            <ImageView fitHeight="20" fitWidth="20">
-                                <image><Image url="@icons/exporter.png"/></image>
+                            <ImageView fitHeight="20" fitWidth="20" styleClass="white-icon">
+                                <image><Image url="/com/example/demo1/icons/exporter.png"/></image>
                             </ImageView>
                         </graphic>
                     </Button>

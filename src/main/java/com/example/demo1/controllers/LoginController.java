@@ -20,18 +20,18 @@ public class LoginController {
         String user = usernameField != null ? usernameField.getText() : null;
         String pass = passwordField != null ? passwordField.getText() : null;
 
-        // TODO: Replace with real authentication (DAO/service)
+        // TODO: À remplacer par une vraie authentification via DAO ou service
         if ("admin".equals(user) && "123".equals(pass)) {
-            // Navigate to main application
+            // Accéder à l'application principale après une connexion réussie
             try {
-                // Get the current stage
+                // Récupérer la fenêtre courante
                 Stage stage = (Stage) usernameField.getScene().getWindow();
                 
-                // Load main layout
+                // Charger la mise en page principale de l'application
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/demo1/views/mainLayout.fxml"));
                 Parent mainView = fxmlLoader.load();
                 
-                // Set new scene
+                // Afficher la nouvelle scène
                 Scene mainScene = new Scene(mainView);
                 stage.setScene(mainScene);
                 stage.setTitle("Gestion Emplois du Temps - Tableau de Bord");

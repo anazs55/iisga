@@ -3,6 +3,7 @@ package com.example.demo1.controllers;
 import com.example.demo1.models.Groupe;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class GroupesController {
+public class GroupesController implements Searchable {
 
     @FXML private TableView<Groupe> tableGroupes;
 
@@ -24,6 +25,7 @@ public class GroupesController {
     @FXML private TableColumn<Groupe, String> colNiveau;
 
     private ObservableList<Groupe> groupes;
+    private FilteredList<Groupe> filteredGroupes;
 
     @FXML
     public void initialize() {
@@ -65,8 +67,22 @@ public class GroupesController {
                 new Groupe(2, "Groupe 2", "Licence 2"),
                 new Groupe(3, "Groupe 3", "Master 1")
             );
-            tableGroupes.setItems(groupes);
+            filteredGroupes = new FilteredList<>(groupes, g -> true);
+            tableGroupes.setItems(filteredGroupes);
         }
+    }
+
+    @Override
+    public void search(String query) {
+        String lowerQuery = query == null ? "" : query.toLowerCase().trim();
+        filteredGroupes.setPredicate(groupe -> {
+            if (lowerQuery.isEmpty()) {
+                return true;
+            }
+            return String.valueOf(groupe.getId()).contains(lowerQuery)
+                || groupe.getNom().toLowerCase().contains(lowerQuery)
+                || groupe.getNiveau().toLowerCase().contains(lowerQuery);
+        });
     }
 
     private void openDialog(String resourcePath, String title) throws IOException {

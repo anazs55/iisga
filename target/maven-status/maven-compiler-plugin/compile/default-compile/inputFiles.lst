@@ -6,8 +6,12 @@ C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\GroupesC
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\LoginController.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\MainController.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\ModulesController.java
+C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\NotificationsController.java
+C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\ProfileController.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\SallesController.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\SeancesController.java
+C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\controllers\Searchable.java
+C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\database\DBConnection.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\Main.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\models\Examen.java
 C:\Users\HP\Desktop\project\src\main\java\com\example\demo1\models\Formateur.java

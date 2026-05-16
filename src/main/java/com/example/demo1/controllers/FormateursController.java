@@ -3,6 +3,7 @@ package com.example.demo1.controllers;
 import com.example.demo1.models.Formateur;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class FormateursController {
+public class FormateursController implements Searchable {
 
     @FXML private TableView<Formateur> tableFormateurs;
 
@@ -26,6 +27,7 @@ public class FormateursController {
     @FXML private TableColumn<Formateur, String> colTelephone;
 
     private ObservableList<Formateur> formateurs;
+    private FilteredList<Formateur> filteredFormateurs;
 
     @FXML
     public void initialize() {
@@ -69,8 +71,24 @@ public class FormateursController {
                 new Formateur(2, "Sow", "Awa", "awa@example.com", "770000002"),
                 new Formateur(3, "Traoré", "Moussa", "moussa@example.com", "770000003")
             );
-            tableFormateurs.setItems(formateurs);
+            filteredFormateurs = new FilteredList<>(formateurs, f -> true);
+            tableFormateurs.setItems(filteredFormateurs);
         }
+    }
+
+    @Override
+    public void search(String query) {
+        String lowerQuery = query == null ? "" : query.toLowerCase().trim();
+        filteredFormateurs.setPredicate(formateur -> {
+            if (lowerQuery.isEmpty()) {
+                return true;
+            }
+            return String.valueOf(formateur.getId()).contains(lowerQuery)
+                || formateur.getNom().toLowerCase().contains(lowerQuery)
+                || formateur.getPrenom().toLowerCase().contains(lowerQuery)
+                || formateur.getEmail().toLowerCase().contains(lowerQuery)
+                || formateur.getTelephone().toLowerCase().contains(lowerQuery);
+        });
     }
 
     private void openDialog(String resourcePath, String title) throws IOException {

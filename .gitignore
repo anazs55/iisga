@@ -1,0 +1,20 @@
+# Build output
+/target/
+/out/
+
+# Maven
+logs/
+!logs/.keep
+
+# Java
+*.class
+*.log
+
+# IDE
+*.iml
+*.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

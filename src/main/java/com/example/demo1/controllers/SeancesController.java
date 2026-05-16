@@ -7,6 +7,7 @@ import com.example.demo1.models.Salle;
 import com.example.demo1.models.Seance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class SeancesController {
+public class SeancesController implements Searchable {
 
     @FXML private TableView<Seance> tableSeances;
 
@@ -30,6 +31,9 @@ public class SeancesController {
     @FXML private TableColumn<Seance, LocalDate> colDate;
     @FXML private TableColumn<Seance, String> colDebut;
     @FXML private TableColumn<Seance, String> colFin;
+
+    private ObservableList<Seance> seances;
+    private FilteredList<Seance> filteredSeances;
 
     @FXML
     public void initialize() {
@@ -44,19 +48,40 @@ public class SeancesController {
     }
 
     private void chargerDonnees() {
-        ObservableList<Seance> seances = FXCollections.observableArrayList(
-            new Seance(new Formateur(1, "Diallo", "Amadou", "amadou@example.com", "770000001"),
-                       new Salle(1, "Salle A101", 30),
-                       new Groupe(1, "Groupe 1", "Licence 1"),
-                       new Module(1, "Mathématiques", 30),
-                       LocalDate.now(), "08:30", "10:00"),
-            new Seance(new Formateur(2, "Sow", "Awa", "awa@example.com", "770000002"),
-                       new Salle(2, "Salle B202", 40),
-                       new Groupe(2, "Groupe 2", "Licence 2"),
-                       new Module(2, "Physique", 25),
-                       LocalDate.now().plusDays(1), "10:30", "12:00")
-        );
-        tableSeances.setItems(seances);
+        if (seances == null) {
+            seances = FXCollections.observableArrayList(
+                new Seance(new Formateur(1, "Diallo", "Amadou", "amadou@example.com", "770000001"),
+                           new Salle(1, "Salle A101", 30),
+                           new Groupe(1, "Groupe 1", "Licence 1"),
+                           new Module(1, "Mathématiques", 30),
+                           LocalDate.now(), "08:30", "10:00"),
+                new Seance(new Formateur(2, "Sow", "Awa", "awa@example.com", "770000002"),
+                           new Salle(2, "Salle B202", 40),
+                           new Groupe(2, "Groupe 2", "Licence 2"),
+                           new Module(2, "Physique", 25),
+                           LocalDate.now().plusDays(1), "10:30", "12:00")
+            );
+            filteredSeances = new FilteredList<>(seances, s -> true);
+            tableSeances.setItems(filteredSeances);
+        }
+    }
+
+    @Override
+    public void search(String query) {
+        String lowerQuery = query == null ? "" : query.toLowerCase().trim();
+        filteredSeances.setPredicate(seance -> {
+            if (lowerQuery.isEmpty()) {
+                return true;
+            }
+            return seance.getFormateur().getNom().toLowerCase().contains(lowerQuery)
+                || seance.getFormateur().getPrenom().toLowerCase().contains(lowerQuery)
+                || seance.getSalle().getNom().toLowerCase().contains(lowerQuery)
+                || seance.getGroupe().getNom().toLowerCase().contains(lowerQuery)
+                || seance.getModule().getNom().toLowerCase().contains(lowerQuery)
+                || seance.getDate().toString().contains(lowerQuery)
+                || seance.getDebut().toLowerCase().contains(lowerQuery)
+                || seance.getFin().toLowerCase().contains(lowerQuery);
+        });
     }
 
     @FXML
@@ -73,7 +98,7 @@ public class SeancesController {
 
     @FXML
     private void handleDelete() {
-        // TODO: delete selected seance.
+        // TODO: Supprimer la séance sélectionnée de la liste
     }
 }
 

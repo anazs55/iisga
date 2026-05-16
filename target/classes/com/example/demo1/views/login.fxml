@@ -22,7 +22,7 @@
             <StackPane prefWidth="300" styleClass="login-left-panel">
                 <ImageView fitWidth="180" preserveRatio="true">
                     <image>
-                        <Image url="@images/iisga.png" />
+                        <Image url="/com/example/demo1/images/iisga.png" />
                     </image>
                 </ImageView>
             </StackPane>

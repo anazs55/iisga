@@ -3,6 +3,7 @@ package com.example.demo1.controllers;
 import com.example.demo1.models.Module;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class ModulesController {
+public class ModulesController implements Searchable {
 
     @FXML private TableView<Module> tableModules;
 
@@ -24,6 +25,7 @@ public class ModulesController {
     @FXML private TableColumn<Module, Integer> colDuree;
 
     private ObservableList<Module> modules;
+    private FilteredList<Module> filteredModules;
 
     @FXML
     public void initialize() {
@@ -65,8 +67,23 @@ public class ModulesController {
                 new Module(2, "Physique", 25),
                 new Module(3, "Informatique", 40)
             );
-            tableModules.setItems(modules);
+            filteredModules = new FilteredList<>(modules, p -> true);
+            tableModules.setItems(filteredModules);
         }
+    }
+
+    @Override
+    public void search(String query) {
+        if (filteredModules == null) {
+            return;
+        }
+        String lowerQuery = query == null ? "" : query.toLowerCase();
+        filteredModules.setPredicate(module ->
+            lowerQuery.isEmpty()
+                || String.valueOf(module.getId()).contains(lowerQuery)
+                || module.getNom().toLowerCase().contains(lowerQuery)
+                || String.valueOf(module.getDuree()).contains(lowerQuery)
+        );
     }
 
     private void openDialog(String resourcePath, String title) throws IOException {
